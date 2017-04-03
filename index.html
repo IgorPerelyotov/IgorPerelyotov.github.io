@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Quoridor</title>
+		<style>
+			span {
+				display: block;
+				text-align: left;
+			}
+			#canvas {
+				background-color: lightgray;
+				padding: 0;
+				display: inline-block;
+			}
+			#walls {
+				display: inline-block;
+				vertical-align: top;
+			}
+			#container {
+				text-align: center;
+			}
+		</style>
+		<script src="easeljs-0.8.2.min.js"></script>
+		<script src="quoridor.js"></script>
+	</head>
+	<body onload="start()">
+	<div id="container">
+		<canvas id="canvas" width=605 height=605></canvas>
+		<div id="walls"></div>
+	</div>
+	</body>
+</html>
