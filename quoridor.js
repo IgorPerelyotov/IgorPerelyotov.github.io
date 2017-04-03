@@ -636,7 +636,7 @@ function AI(id, game) {
 			for (var i = 0; i < game.walls.length; i++) {
 				if (Math.max(Math.abs(wall.charCodeAt(0) -
 					game.walls[i].charCodeAt(0)), Math.abs(wall.charCodeAt(1) -
-					game.walls[i].charCodeAt(1))) < 2) {
+					game.walls[i].charCodeAt(1))) < 3) {
 						check = true;
 						break;
 					}
