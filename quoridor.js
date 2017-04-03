@@ -517,7 +517,7 @@ function AIProxy(game, id) {
 	var game = game;
 	var id = id;
 	var ai = new AI(id, game);
-	var maxDepth = 1;
+	var maxDepth = 2;
 	ai.setDepth(maxDepth);
 
 	this.searchMove = function() {
@@ -629,10 +629,19 @@ function AI(id, game) {
 	//latter is possible)
 	function generateAllActions(pawn) {
 		var actions = game.findLegalMoves(pawn);
+		var check = false;
 		if (game.wallLimits[game.whichTurn] === 0)
 			return actions;
 		return actions.concat(ALL_WALLS.filter(function(wall) {
-			return game.isWallAccepted(wall);
+			for (var i = 0; i < game.walls.length; i++) {
+				if (Math.max(Math.abs(wall.charCodeAt(0) -
+					game.walls[i].charCodeAt(0)), Math.abs(wall.charCodeAt(1) -
+					game.walls[i].charCodeAt(1))) < 2) {
+						check = true;
+						break;
+					}
+			}
+			return check && game.isWallAccepted(wall);
 		}));
 	}
 }
