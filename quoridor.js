@@ -659,10 +659,10 @@ function AI(id, game) {
 
 function start() {
 	var game = new Game(2);
-	game.pawns = ['e2', 'd6'];
-	game.walls = ['d1v', 'f1h', 'h1h', 'e2h', 'c2v', 'g2v', 'd3h', 'c4v',
-		'e4v', 'g4v', 'e5h', 'g5h', 'c6h'];
-	game.wallLimits = [7, 0];
+	//game.pawns = ['e2', 'd6'];
+	//game.walls = ['d1v', 'f1h', 'h1h', 'e2h', 'c2v', 'g2v', 'd3h', 'c4v',
+	//	'e4v', 'g4v', 'e5h', 'g5h', 'c6h'];
+	//game.wallLimits = [7, 0];
 	var ui = new UI(game, 0);
 	var ai = new AIProxy(game, 1);
 
