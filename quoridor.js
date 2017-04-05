@@ -400,6 +400,8 @@ function UI(game, myId) {
 	};
 
 	function onWallPut(position) {
+		var aiDiv = document.getElementById('ai');
+		aiDiv.style.visibility = 'hidden';
 		var horizontal = position.charAt(2) === 'h';
 		var chars = game.chars;
 		var w = horizontal ?
@@ -431,6 +433,8 @@ function UI(game, myId) {
 
 	function onPawnMoved(oldPosition, position) {
 		//Fill cells with original color back
+		var aiDiv = document.getElementById('ai');
+		aiDiv.style.visibility = 'hidden';
 		game.undoMovePawn(oldPosition);
 		var moves = game.findLegalMoves(oldPosition);
 		game.weakMovePawn(position);
@@ -521,16 +525,16 @@ function AIProxy(game, id) {
 	var forcedDepth = 4;
 
 	ai.setDepth(maxDepth);
+	var aiDiv = document.getElementById('ai');
+	aiDiv.style.visibility = 'hidden';
 
 	this.searchMove = function() {
 		if (game.whichTurn !== id)
 			return;
-		if (game.wallLimits[id] === 0) {
-			ai.setDepth(forcedDepth);
-		} else {
-			ai.setDepth(maxDepth);
-		}
-		ai.search(maxDepth, Number.MIN_SAFE_INTEGER,
+		var initialDepth = game.wallLimits[id] === 0 ? forcedDepth
+							     : maxDepth;
+		ai.setDepth(initialDepth);
+		ai.search(initialDepth, Number.MIN_SAFE_INTEGER,
 			Number.MAX_SAFE_INTEGER);
 	};
 }
@@ -655,6 +659,10 @@ function AI(id, game) {
 
 function start() {
 	var game = new Game(2);
+	game.pawns = ['e2', 'd6'];
+	game.walls = ['d1v', 'f1h', 'h1h', 'e2h', 'c2v', 'g2v', 'd3h', 'c4v',
+		'e4v', 'g4v', 'e5h', 'g5h', 'c6h'];
+	game.wallLimits = [7, 0];
 	var ui = new UI(game, 0);
 	var ai = new AIProxy(game, 1);
 
@@ -663,10 +671,22 @@ function start() {
 
 	function triggerAI() {
 		if (game.whichTurn !== 0)
+			var aiDiv = document.getElementById('ai');
+			aiDiv.style.visibility = 'visible';
 			setTimeout(aiStart, 50);
 	}
 
 	function aiStart() {
 		ai.searchMove();
 	}
+}
+
+function websocketStart() {
+	var socket = new SockJS('http://127.0.0.1:8080/quoridor');
+	var stompClient = Stomp.over(socket);
+	stompClient.heartbeat.outgoing = 20000; // client will send heartbeats every 20000ms
+	stompClient.heartbeat.incoming = 20000;
+	stompClient.connect({}, function (frame) {
+		console.log('Connected: ' + frame);
+    });
 }
