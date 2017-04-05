@@ -401,8 +401,7 @@ function UI(game, myId) {
 
 	function onWallPut(position) {
 		console.log(position);
-		var aiDiv = document.getElementById('ai');
-		aiDiv.style.visibility = 'hidden';
+		document.getElementById('ai').style.visibility = 'hidden';
 		var horizontal = position.charAt(2) === 'h';
 		var chars = game.chars;
 		var w = horizontal ?
@@ -435,8 +434,7 @@ function UI(game, myId) {
 	function onPawnMoved(oldPosition, position) {
 		console.log(position);
 		//Fill cells with original color back
-		var aiDiv = document.getElementById('ai');
-		aiDiv.style.visibility = 'hidden';
+		document.getElementById('ai').style.visibility = 'hidden';
 		game.undoMovePawn(oldPosition);
 		var moves = game.findLegalMoves(oldPosition);
 		game.weakMovePawn(position);
@@ -527,8 +525,7 @@ function AIProxy(game, id) {
 	var forcedDepth = 4;
 
 	ai.setDepth(maxDepth);
-	var aiDiv = document.getElementById('ai');
-	aiDiv.style.visibility = 'hidden';
+	document.getElementById('ai').style.visibility = 'hidden';
 
 	this.searchMove = function() {
 		if (game.whichTurn !== id)
@@ -673,8 +670,7 @@ function start() {
 
 	function triggerAI() {
 		if (game.whichTurn !== 0)
-			var aiDiv = document.getElementById('ai');
-			aiDiv.style.visibility = 'visible';
+			document.getElementById('ai').style.visibility = 'visible';
 			setTimeout(aiStart, 50);
 	}
 
