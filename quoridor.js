@@ -518,11 +518,18 @@ function AIProxy(game, id) {
 	var id = id;
 	var ai = new AI(id, game);
 	var maxDepth = 2;
+	var forcedDepth = 4;
+
 	ai.setDepth(maxDepth);
 
 	this.searchMove = function() {
 		if (game.whichTurn !== id)
 			return;
+		if (game.wallLimits[id] === 0) {
+			ai.setDepth(forcedDepth);
+		} else {
+			ai.setDepth(maxDepth);
+		}
 		ai.search(maxDepth, Number.MIN_SAFE_INTEGER,
 			Number.MAX_SAFE_INTEGER);
 	};
