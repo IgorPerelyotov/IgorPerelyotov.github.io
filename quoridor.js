@@ -400,6 +400,7 @@ function UI(game, myId) {
 	};
 
 	function onWallPut(position) {
+		console.log(position);
 		var aiDiv = document.getElementById('ai');
 		aiDiv.style.visibility = 'hidden';
 		var horizontal = position.charAt(2) === 'h';
@@ -432,6 +433,7 @@ function UI(game, myId) {
 	}
 
 	function onPawnMoved(oldPosition, position) {
+		console.log(position);
 		//Fill cells with original color back
 		var aiDiv = document.getElementById('ai');
 		aiDiv.style.visibility = 'hidden';
