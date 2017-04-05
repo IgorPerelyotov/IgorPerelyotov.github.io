@@ -118,8 +118,7 @@ function Game(players) {
 		}
 		moves = moves.filter(function(move) {
 			return move.search(DISALLOWED_CHARS) === -1 &&
-				self.pawns.indexOf(move) === -1 &&
-				!isObstructedByWall(pawn, move);
+				self.pawns.indexOf(move) === -1;
 		});
 		return moves;
 	};
@@ -432,8 +431,9 @@ function UI(game, myId) {
 
 	function onPawnMoved(oldPosition, position) {
 		//Fill cells with original color back
+		game.undoMovePawn(oldPosition);
 		var moves = game.findLegalMoves(oldPosition);
-		moves.push(position);
+		game.weakMovePawn(position);
 		for (var i = 0; i < moves.length; i++) {
 			var cell = cells.find(function (item, index, arr) {
 				return item.coord === moves[i];
