@@ -327,7 +327,7 @@ function UI(game, myId) {
 		document.getElementById('walls').style.display = 'inline-block';
 		game.addListener('pawnmoved', onPawnMoved);
 		game.addListener('wallput', onWallPut);
-		game.addListener('gameover', clearStage);
+		game.addListener('gameover', triggerClearStage);
 
 		//Images for vertical and horizontal walls
 		var possibleWalls = {};
@@ -372,6 +372,10 @@ function UI(game, myId) {
 				stage.addChild(pawn);
 		}
 		stage.update();
+
+		function triggerClearStage() {
+				setTimeout(clearStage, 2000);
+		}
 
 		function clearStage() {
 				stage.removeAllChildren();
