@@ -713,7 +713,7 @@ function Net() {
 		var game;
 		var id;
 		var ui;
-		var socket = new SockJS('http://127.0.0.1:8080/quoridor');
+		var socket = new SockJS('http://annimon.com:8080/quoridor');
 		var stompClient = Stomp.over(socket);
 		var endpoint;
 
