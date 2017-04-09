@@ -689,8 +689,8 @@ function AI(id, game) {
 
 function localGame() {
 		var game = new Game(2);
-		var ui = new UI(game, 0);
 		new Sounds(game, 0);
+		var ui = new UI(game, 0);
 		ui.playerNames = ['Вы', 'ИИ'];
 		ui.updateNames();
 		var ai = new AIProxy(game, 1);
@@ -741,8 +741,8 @@ function Net() {
 						});
 						game.whichTurn = 1; //hack. Don't fire events until enemy doesn't join to the game
 						id = 0;
-						ui = new UI(game, id);
 						new Sounds(game, id);
+						ui = new UI(game, id);
 						subCreate.unsubscribe();
 						document.getElementById('mode').style.display = 'none';
 						var wait = document.createElement('span');
@@ -789,8 +789,8 @@ function Net() {
 														document.getElementById('walls').style.display = 'none';
 														document.getElementById('menu').style.display = 'inline-block';
 												});
-												ui = new UI(game, id);
 												new Sounds(game, id);
+												ui = new UI(game, id);
 												createjs.Sound.play('ready');
 												ui.playerNames = [target.textContent, name];
 												ui.updateNames();
@@ -862,7 +862,6 @@ function Sounds(game, id) {
 						createjs.Sound.play('win');
 				else
 						createjs.Sound.play('laugh');
-				createjs.Sound.removeAllSounds();
 		}
 }
 
