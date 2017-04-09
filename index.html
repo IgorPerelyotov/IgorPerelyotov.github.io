@@ -1,33 +1,29 @@
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Quoridor</title>
-		<style>
-			span {
-				display: block;
-				text-align: left;
-			}
-			#canvas {
-				background-color: lightgray;
-				padding: 0;
-				display: inline-block;
-			}
-			#walls {
-				display: inline-block;
-				vertical-align: top;
-			}
-			#container {
-				text-align: center;
-			}
-		</style>
-		<script src="easeljs-0.8.2.min.js"></script>
-		<script src="quoridor.js"></script>
-	</head>
-	<body onload="start()">
-	<div id="container">
-		<canvas id="canvas" width=605 height=605></canvas>
-		<div id="walls"></div>
-		<div id="ai">Thinking...</div>
-	</div>
-	</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Quoridor</title>
+        <link rel="stylesheet" type="text/css" href="quoridor.css"/>
+        <script src="easeljs-0.8.2.min.js"></script>
+        <script src="soundjs-0.6.2.min.js"></script>
+        <script src="sockjs.min.js"></script>
+        <script src="stomp.js"></script>
+        <script src="quoridor.js"></script>
+    </head>
+    <body onload="init()">
+        <div id="container">
+            <canvas id="canvas" width=605 height=605></canvas>
+            <div id="walls"></div>
+            <div id="menu">
+                <span class="menuOption" onclick="localGame()">Сыграть с компьютером</span>
+                <span class="menuOption" onclick="networkGame()">Сыграть по сети</span>
+            </div>
+            <div id="mode">
+                <input id="name" placeholder="Ваше имя"/>
+                <span class="menuOption" onclick="net.createGame()">Создать игру</span>
+                <span class="menuOption" onclick="net.showHosts()">Список хостов</span>
+                <ul id="hosts"></ul>
+            </div>
+            <div id="ai"></div>
+        </div>
+    </body>
 </html>

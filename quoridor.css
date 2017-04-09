@@ -1,0 +1,70 @@
+#canvas {
+	background-color: lightgray;
+	padding: 0;
+	display: inline-block;
+}
+
+#walls {
+	display: none;
+	width: 20em;
+	text-align: left;
+	vertical-align: top;
+}
+
+#wait {
+	margin-top: 1em;
+	font-size: 1em;
+	letter-spacing: 0;
+}
+
+#menu {
+	display: inline-block;
+	vertical-align: top;
+	width: 20em;
+}
+
+#mode {
+	vertical-align: top;
+	display: none;
+	width: 20em;
+}
+
+.menuOption {
+	text-align: center;
+	margin: 1.2em 0;
+	font-size: 1.2em;
+	padding: 1em 0.5em;
+	display: block;
+	background: linear-gradient(to bottom,rgba(245,245,245,1) 0%,rgba(240,240,240,1) 100%);
+	text-shadow: 0 1px 0 #FFF;
+	color: #848484;
+	cursor: pointer;
+}
+
+.wallCount {
+	display: block;
+	font-size: 1.5em;
+	letter-spacing: 2px;
+}
+
+#container {
+	text-align: center;
+}
+
+#hosts {
+	list-style: none;
+	font-size: 1.2em;
+	color: blue;
+	padding-left: 0;
+}
+
+.host {
+	margin: 0.5em 0;
+	font-size: 1.2em;
+	padding: 0.4em 0;
+	background: linear-gradient(to bottom,rgba(245,245,245,1) 0%,rgba(240,240,240,1) 100%);
+	text-shadow: 0 1px 0 #FFF;
+	cursor: pointer;
+	width: 100%;
+	text-align: center;
+}
