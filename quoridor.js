@@ -566,7 +566,7 @@ function AIProxy(game, id) {
 		var id = id;
 		var ai = new AI(id, game);
 		var maxDepth = 2;
-		var forcedDepth = 4;
+		var forcedDepth = 1;
 
 		ai.setDepth(maxDepth);
 		document.getElementById('ai').style.visibility = 'hidden';
