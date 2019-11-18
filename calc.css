@@ -1,0 +1,21 @@
+#grid {
+	display: flex;
+	align-items: flex-start;
+}
+
+#grid > div {
+	width: 20%;
+	border: 2px solid black;
+	margin: 10px;
+	padding: 5px;
+	text-align: center;
+}
+
+#grid > #calc {
+	border: none;
+}
+
+#grid .green_border {
+	border-color: green;
+	border-width: 5px;
+}
